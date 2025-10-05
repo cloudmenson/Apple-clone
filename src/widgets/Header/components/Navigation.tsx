@@ -2,17 +2,19 @@
 
 import { useState } from "react";
 
-import { navigation } from "@/shared";
+import { cn, navigation, useIsMobile } from "@/shared";
+import { NavItem } from "@/shared/static/navigation";
 
 import { NavigationItem } from "./NavigationItem";
 import { NavigationSubitem } from "./NavigationSubitem";
-import { NavItem } from "@/shared/static/navigation";
 
 type Navigation = {
   headerRef: React.RefObject<HTMLDivElement | null>;
 };
 
 export const Navigation = ({ headerRef }: Navigation) => {
+  const { isMobile } = useIsMobile(833);
+
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLUListElement>) => {
@@ -26,19 +28,27 @@ export const Navigation = ({ headerRef }: Navigation) => {
   return (
     <ul
       onMouseLeave={handleMouseLeave}
-      className="mx-[-8px] mx-auto flex h-full w-auto max-w-[1024px] items-center justify-between px-[22px]"
+      className={cn(
+        "mx-[-8px] mx-auto flex h-full w-auto max-w-[1024px] items-center px-[22px]",
+        isMobile ? "justify-end gap-2 px-[16px]" : "justify-between"
+      )}
     >
-      {navigation.map((i: NavItem, idx) => (
-        <li
-          key={i.id}
-          onMouseEnter={() => setActiveIndex(idx)}
-          className="group h-full w-fit px-[8px] text-[12px] leading-[12px] font-normal text-[#cdcdcdfb] transition duration-400 hover:text-[#fffffffd]"
-        >
-          <NavigationItem i={i} />
+      {navigation
+        .filter((i) => (isMobile ? !i.mobileHidden : !i.desktopHidden))
+        .map((i: NavItem, idx) => (
+          <li
+            key={i.id}
+            onMouseEnter={() => setActiveIndex(idx)}
+            className={cn(
+              "group h-full w-fit px-[8px] text-[12px] leading-[12px] font-normal text-[#cdcdcdfb] transition duration-400 hover:text-[#fffffffd]",
+              isMobile && idx === 0 ? "mr-auto" : ""
+            )}
+          >
+            <NavigationItem i={i} />
 
-          {i.submenu && activeIndex === idx && <NavigationSubitem i={i} />}
-        </li>
-      ))}
+            {i.submenu && activeIndex === idx && <NavigationSubitem i={i} />}
+          </li>
+        ))}
     </ul>
   );
 };

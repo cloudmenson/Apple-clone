@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { cn } from "@/shared";
-import { NavItem, SubmenuColumn } from "@/shared/static/navigation";
+import { NavItem } from "@/shared/static/navigation";
 
 type NavigationSubitemProps = {
   i: NavItem;

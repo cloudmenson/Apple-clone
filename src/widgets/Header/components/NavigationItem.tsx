@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 
-export const NavigationItem = ({ i }) => {
+import { NavItem } from "@/shared/static/navigation";
+
+type NavigationItem = {
+  i: NavItem;
+};
+
+export const NavigationItem = ({ i }: NavigationItem) => {
   return (
     <Link
       href={i.href}

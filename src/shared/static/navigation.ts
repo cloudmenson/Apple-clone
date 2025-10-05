@@ -7,7 +7,11 @@ export type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 export type SubmenuColumn = {
   big?: boolean;
   title?: string;
-  links?: { size?: string; label?: string; href?: string }[];
+  links?: {
+    size?: string;
+    label?: string;
+    href?: string;
+  }[];
 };
 
 export type NavItem = {
@@ -16,6 +20,9 @@ export type NavItem = {
   text?: string;
   ariaLabel?: string;
   Icon?: IconComponent;
+  menuHandler?: boolean;
+  mobileHidden?: boolean;
+  desktopHidden?: boolean;
   submenu?: SubmenuColumn[];
 };
 
@@ -25,6 +32,7 @@ export const navigation: NavItem[] = [
     id: 2,
     href: "#",
     text: "Store",
+    mobileHidden: true,
     submenu: [
       {
         big: true,
@@ -64,6 +72,7 @@ export const navigation: NavItem[] = [
   },
   {
     id: 3,
+    mobileHidden: true,
     text: "Mac",
     href: "#",
     submenu: [
@@ -112,6 +121,7 @@ export const navigation: NavItem[] = [
   },
   {
     id: 4,
+    mobileHidden: true,
     text: "iPad",
     href: "#",
     submenu: [
@@ -157,6 +167,7 @@ export const navigation: NavItem[] = [
   {
     id: 5,
     text: "iPhone",
+    mobileHidden: true,
     href: "#",
     submenu: [
       {
@@ -203,6 +214,7 @@ export const navigation: NavItem[] = [
   {
     id: 6,
     text: "Watch",
+    mobileHidden: true,
     href: "#",
     submenu: [
       {
@@ -250,6 +262,7 @@ export const navigation: NavItem[] = [
   {
     id: 7,
     text: "Vision",
+    mobileHidden: true,
     href: "#",
     submenu: [
       {
@@ -286,6 +299,7 @@ export const navigation: NavItem[] = [
   },
   {
     id: 8,
+    mobileHidden: true,
     text: "AirPods",
     href: "#",
     submenu: [
@@ -325,6 +339,7 @@ export const navigation: NavItem[] = [
   {
     id: 9,
     text: "TV & Home",
+    mobileHidden: true,
     href: "#",
     submenu: [
       {
@@ -365,6 +380,7 @@ export const navigation: NavItem[] = [
     ],
   },
   {
+    mobileHidden: true,
     id: 10,
     text: "Entertainment",
     href: "#",
@@ -401,6 +417,7 @@ export const navigation: NavItem[] = [
   {
     id: 11,
     text: "Accessories",
+    mobileHidden: true,
     href: "#",
     submenu: [
       {
@@ -436,6 +453,7 @@ export const navigation: NavItem[] = [
     ],
   },
   {
+    mobileHidden: true,
     id: 12,
     text: "Support",
     href: "#",
@@ -476,4 +494,12 @@ export const navigation: NavItem[] = [
   },
   { id: 13, Icon: Icon.Search, ariaLabel: "Search", href: "#" },
   { id: 14, Icon: Icon.Bag, ariaLabel: "Bag", href: "#" },
+  {
+    id: 15,
+    Icon: Icon.Menu,
+    ariaLabel: "Menu",
+    href: "#",
+    menuHandler: true,
+    desktopHidden: true,
+  },
 ];
