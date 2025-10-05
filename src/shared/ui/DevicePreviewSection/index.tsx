@@ -33,7 +33,7 @@ export const DevicePreviewSection = ({
   rightLinkText = "Buy",
   leftLinkText = "Learn more",
 }: DevicePreviewProps) => {
-  const mainClass = cn("relative text-center", className);
+  const mainClass = cn("relative text-center bg-[#fff]", className);
 
   const mainTitleClass = cn(
     "mb-[4px] md:mb-[6px] text-[28.9px] leading-[36px] md:text-[51.3px] md:leading-[60px] font-semibold text-[#F5F5F7]",
@@ -67,7 +67,7 @@ export const DevicePreviewSection = ({
         : {
             initial: { opacity: 0, y: 50 },
             whileInView: { opacity: 1, y: 0 },
-            viewport: { once: true, amount: 0.2 },
+            viewport: { once: true, amount: 0.15 },
             transition: { duration: 0.6, ease: "easeOut" },
           })}
     >

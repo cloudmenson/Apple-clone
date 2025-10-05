@@ -1,5 +1,5 @@
-// import Apple from "@/assets/svg/apple.svg";
-// import Close from "@/assets/svg/close.svg";
-// import Search from "@/assets/svg/search.svg";
+import Apple from "../svg/apple.svg?react";
+import Bag from "../svg/bag.svg?react";
+import Search from "../svg/search.svg?react";
 
-// export { Apple, Close, Search };
+export { Apple, Bag, Search };

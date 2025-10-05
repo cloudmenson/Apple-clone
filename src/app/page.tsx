@@ -29,7 +29,7 @@ export default function Home() {
   const { isMobile } = useIsMobile();
 
   return (
-    <main className="flex flex-col gap-[12px] bg-[#fff]">
+    <main className="mt-[44px] flex flex-col gap-[12px] bg-[#fff]">
       <DevicePreviewSection
         href="#"
         size="large"
@@ -37,9 +37,9 @@ export default function Home() {
         rightLinkHref="#"
         rightLinkText="Buy"
         title="iPhone 17 Pro"
+        className="bg-[#000]"
         subtitle="All out Pro."
         leftLinkText="Learn more"
-        className="bg-[#000] pt-[44px]"
         img={
           <Image
             alt="iPhone 17 Pro"
