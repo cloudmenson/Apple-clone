@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { Header } from "@/widgets";
+import { Footer, Header } from "@/widgets";
 
 import "./globals.css";
 
@@ -25,9 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <Header />
 
-      <body className={`${InterSans.variable} antialiased`}>
-        {children}
-      </body>
+      <body className={`${InterSans.variable} antialiased`}>{children}</body>
+
+      <Footer />
     </html>
   );
 }

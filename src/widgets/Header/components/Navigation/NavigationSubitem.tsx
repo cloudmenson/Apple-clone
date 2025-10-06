@@ -18,10 +18,10 @@ export const NavigationSubitem = ({ i }: NavigationSubitemProps) => {
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
         transition={{
-          duration: 1,
+          duration: 0.8,
           ease: [0.15, 0.85, 0.35, 1],
         }}
-        className="absolute top-[44px] left-0 w-screen origin-top bg-[rgb(24,24,24)] text-white"
+        className="absolute top-[44px] left-0 w-screen origin-top bg-[rgba(24,24,24,0.95)] text-white backdrop-saturate-180"
       >
         <div className="mx-auto flex max-w-[1024px] px-[22px] pt-[40px] pb-[84px]">
           {i.submenu?.map((col, idx: number) => (
@@ -51,9 +51,9 @@ export const NavigationSubitem = ({ i }: NavigationSubitemProps) => {
                   <li
                     key={idx}
                     className={cn(
-                      "text-[rgb(255, 255, 255)] text-[12px] leading-[16px] font-semibold hover:text-white",
+                      "text-[12px] leading-[16px] font-semibold text-[#cdcdcdfb] transition duration-400 hover:text-[#fffffffd]",
                       link.size === "big" &&
-                        "text-[24px] leading-[24px] text-[#e8e8ed]"
+                        "text-[24px] leading-[24px] text-[#cdcdcdfb]"
                     )}
                   >
                     <Link href={link.href || "#"}>{link.label}</Link>

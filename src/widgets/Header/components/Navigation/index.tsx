@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import { cn, navigation, useIsMobile } from "@/shared";
 import { NavItem } from "@/shared/static/navigation";
+import { cn, navigation, useIsMobile } from "@/shared";
 
 import { NavigationItem } from "./NavigationItem";
 import { NavigationSubitem } from "./NavigationSubitem";
@@ -21,6 +21,8 @@ export const Navigation = ({ headerRef }: Navigation) => {
     const next = e.relatedTarget as Node | null;
 
     if (next && headerRef?.current?.contains(next)) return;
+
+    if (next && e.currentTarget.contains(next)) return;
 
     setActiveIndex(null);
   };
@@ -40,7 +42,7 @@ export const Navigation = ({ headerRef }: Navigation) => {
             key={i.id}
             onMouseEnter={() => setActiveIndex(idx)}
             className={cn(
-              "group h-full w-fit px-[8px] text-[12px] leading-[12px] font-normal text-[#cdcdcdfb] transition duration-400 hover:text-[#fffffffd]",
+              "group h-full w-fit px-[8px] text-[12px] leading-[12px] font-normal",
               isMobile && idx === 0 ? "mr-auto" : ""
             )}
           >
