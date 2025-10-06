@@ -1,48 +1,44 @@
 "use client";
 
-import { footerNav, footerInfo } from "@/shared";
+import Link from "next/link";
 
-import { FooterColumn } from "./components/FooterColumn";
+import { cn, useIsMobile } from "@/shared";
+
+import { FooterInfo } from "./components/FooterInfo";
+import { FooterTerms } from "./components/FooterTerms";
+import { FooterNavigation } from "./components/FooterNavigation";
 
 export const Footer = () => {
-  const columns = [
-    [1, 2], // Shop and Learn + Wallet
-    [3, 4], // Account + Entertainment
-    [5], // Apple Store
-    [6, 7, 8, 9], // For Business / Education / Healthcare / Government
-    [10, 11], // Apple Values + About Apple
-  ];
+  const { isMobile } = useIsMobile(833);
 
   return (
-    <footer className="mx-auto h-full w-full max-w-[980px] bg-[#f5f5f7] px-[22px] pt-[56px]">
-      <section className="border-b border-[#00000028] pt-[17px] pb-[11px]">
-        <ul>
-          {footerInfo.map((i) => (
-            <li
-              className="text-[gba(0, 0, 0, 0.56)] pb-[9.6px] text-[12px] leading-[16px] font-normal tracking-[-0.12px] text-[rgba(0,0,0,0.56)]"
-              key={i.id}
-            >
-              {i.text}
-            </li>
-          ))}
-        </ul>
-      </section>
+    <footer
+      className={cn(
+        "mx-auto h-full w-full max-w-[980px] bg-[#f5f5f7] pt-[56px]",
+        isMobile ? "px-[16px]" : "px-[22px]"
+      )}
+    >
+      <FooterInfo />
 
-      <section className="grid grid-cols-2 gap-[20px] pt-[32px] pb-[24px] md:grid-cols-5">
-        {columns.map((ids, idx) => (
-          <div key={idx}>
-            {footerNav
-              .filter((item) => ids.includes(item.id))
-              .map((col) => (
-                <FooterColumn
-                  key={col.id}
-                  title={col.label}
-                  links={col.links}
-                />
-              ))}
-          </div>
-        ))}
-      </section>
+      <FooterNavigation />
+
+      <p className="mb-[12px] text-center text-left text-[12px] leading-[16px] text-[rgba(0,0,0,0.56)]">
+        More ways to shop:&nbsp;
+        <Link href="#" className="text-[#06c] hover:underline">
+          Find an Apple Store
+        </Link>
+        &nbsp;or&nbsp;
+        <Link href="#" className="text-[#06c] hover:underline">
+          other retailer
+        </Link>
+        &nbsp;near you.&nbsp; Or call&nbsp;
+        <Link href="tel:18006927753" className="text-[#06c] hover:underline">
+          1-800-MY-APPLE
+        </Link>
+        &nbsp;(1-800-692-7753).
+      </p>
+
+      <FooterTerms />
     </footer>
   );
 };

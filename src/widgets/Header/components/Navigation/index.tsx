@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 import { NavItem } from "@/shared/static/navigation";
 import { cn, navigation, useIsMobile } from "@/shared";
@@ -38,18 +39,19 @@ export const Navigation = ({ headerRef }: Navigation) => {
       {navigation
         .filter((i) => (isMobile ? !i.mobileHidden : !i.desktopHidden))
         .map((i: NavItem, idx) => (
-          <li
-            key={i.id}
-            onMouseEnter={() => setActiveIndex(idx)}
-            className={cn(
-              "group h-full w-fit px-[8px] text-[12px] leading-[12px] font-normal",
-              isMobile && idx === 0 ? "mr-auto" : ""
-            )}
-          >
-            <NavigationItem i={i} />
+          <AnimatePresence key={i.id}>
+            <li
+              onMouseEnter={() => setActiveIndex(idx)}
+              className={cn(
+                "group h-full w-fit px-[8px] text-[12px] leading-[12px] font-normal",
+                isMobile && idx === 0 ? "mr-auto" : ""
+              )}
+            >
+              <NavigationItem i={i} />
 
-            {i.submenu && activeIndex === idx && <NavigationSubitem i={i} />}
-          </li>
+              {i.submenu && activeIndex === idx && <NavigationSubitem i={i} />}
+            </li>
+          </AnimatePresence>
         ))}
     </ul>
   );

@@ -1,4 +1,16 @@
-export const footerNav = [
+export type FooterColumn = {
+  href: string;
+  label: string;
+};
+
+export type FooterItem = {
+  id: number;
+  label: string;
+  column?: number;
+  links: FooterColumn[];
+};
+
+export const footerNav: FooterItem[] = [
   {
     id: 1,
     label: "Shop and Learn",
