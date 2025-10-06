@@ -32,7 +32,7 @@ export const Slider = ({ duration = 3000 }) => {
     };
 
     calc();
-    
+
     window.addEventListener("resize", calc);
     return () => window.removeEventListener("resize", calc);
   }, []);
@@ -111,7 +111,7 @@ export const Slider = ({ duration = 3000 }) => {
                 key={i}
                 onClick={() => setIndex(i + 1)}
                 className={cn(
-                  "h-2 rounded-full transition-all",
+                  "h-2 rounded-full transition-all border border-white/50 cursor-pointer",
                   i + 1 === index ? "w-8 bg-white" : "w-2 bg-white/50"
                 )}
               />
