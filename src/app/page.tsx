@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { Footer, Header } from "@/widgets";
+import { Footer, Header, Slider } from "@/widgets";
 import { useIsMobile, DevicePreviewSection } from "@/shared";
 import {
   card,
@@ -213,6 +213,8 @@ export default function Home() {
           />
         </div>
       </main>
+
+      <Slider />
 
       <Footer />
     </section>
